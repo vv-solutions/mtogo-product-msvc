@@ -1,18 +1,5 @@
 quarkus:
   datasource:
-#    devservices:
-#      image-name: postgres:11-alpine
-#    db-kind: postgresql
-    jdbc:
-      url:
-    username:
-    password:
-
-#    devservices:
-#      image-name: postgres:11-alpine
-#    transaction-manager:
-#    default-transaction-timeout: 300s
   hibernate-orm:
     database:
       generation: update
-#

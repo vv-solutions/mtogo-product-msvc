@@ -1,6 +1,8 @@
 package dk.vv.mtogo.product.msvc.pojos;
 
 
+import dk.vv.mtogo.product.msvc.dtos.ProductDTO;
+import io.quarkus.hibernate.orm.panache.PanacheEntity;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -17,8 +19,8 @@ public class Product {
     @Column(name = "id")
     private int id;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "product_name")
+    private String productName;
 
     // pre vat
     @Column(name = "gross_price")
@@ -50,6 +52,13 @@ public class Product {
     public Product() {
     }
 
+    public Product(ProductDTO productDTO) {
+        this.productName = productDTO.getProductName();
+        this.grossPrice = productDTO.getGrossPrice();
+        this.description = productDTO.getDescription();
+        this.supplierId = productDTO.getSupplierId();
+    }
+
     public int getId() {
         return id;
     }
@@ -58,12 +67,12 @@ public class Product {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public BigDecimal getGrossPrice() {
@@ -106,16 +115,5 @@ public class Product {
         this.createStamp = createStamp;
     }
 
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", grossPrice=" + grossPrice +
-                ", netPrice=" + netPrice +
-                ", description='" + description + '\'' +
-                ", supplierId=" + supplierId +
-                ", createStamp=" + createStamp +
-                '}';
-    }
+
 }

@@ -6,6 +6,18 @@ quarkus:
 
   hibernate-orm:
     dialect: org.hibernate.dialect.H2Dialect
-    sql-load-script: sql/init.sql
+#    sql-load-script: sql/init.sql
     database:
-      generation: drop-and-create
+      generation: update
+
+  flyway:
+    migrate-at-start: true
+    baseline-on-migrate: true
+    out-of-order: true
+    create-schemas: false
+
+
+
+
+
+

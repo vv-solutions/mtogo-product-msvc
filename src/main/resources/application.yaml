@@ -1,4 +1,13 @@
 quarkus:
+
+  smallrye-openapi:
+    info-title: product-svc
+    auto-add-security-requirement: false
+
+  swagger-ui:
+    always-include: true
+    path: /swagger
+
   datasource:
     db-kind: postgresql
     jdbc:

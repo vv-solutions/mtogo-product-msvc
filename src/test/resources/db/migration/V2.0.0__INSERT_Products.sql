@@ -1,15 +1,4 @@
-
-CREATE TABLE IF NOT EXISTS product
-(
-    id SERIAL PRIMARY KEY,
-    create_stamp timestamp(6),
-    description character varying(255) COLLATE pg_catalog."default",
-    gross_price numeric(38,2),
-    product_name varchar COLLATE pg_catalog."default",
-    net_price numeric(38,2),
-    supplier_id integer
-    );
-INSERT INTO product(description, gross_price, name, net_price, supplier_id)
+INSERT INTO product(description, gross_price, product_name, net_price, supplier_id)
 VALUES
     ('Organic Quinoa Salad with Lemon Vinaigrette', 12.99, 'Quinoa Salad', 10.99, 1),
     ('Artisanal Truffle Infused Olive Oil', 24.99, 'Truffle Olive Oil', 19.99, 2),

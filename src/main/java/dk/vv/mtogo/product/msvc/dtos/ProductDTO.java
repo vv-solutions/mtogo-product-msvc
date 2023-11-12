@@ -3,6 +3,7 @@ package dk.vv.mtogo.product.msvc.dtos;
 import dk.vv.mtogo.product.msvc.pojos.Product;
 
 import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 public class ProductDTO {
 
@@ -30,6 +31,18 @@ public class ProductDTO {
         this.supplierId = product.getSupplierId();
     }
 
+    public ProductDTO() {
+    }
+
+    public ProductDTO(int id, String productName, BigDecimal grossPrice, BigDecimal netPrice, String description, int supplierId) {
+        this.id = id;
+        this.productName = productName;
+        this.grossPrice = grossPrice;
+        this.netPrice = netPrice;
+        this.description = description;
+        this.supplierId = supplierId;
+    }
+
     public int getId() {
         return id;
     }
@@ -38,12 +51,13 @@ public class ProductDTO {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+
+    public String getProductName() {
+        return productName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setProductName(String productName) {
+        this.productName = productName;
     }
 
     public BigDecimal getGrossPrice() {

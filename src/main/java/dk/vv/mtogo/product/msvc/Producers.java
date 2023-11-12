@@ -9,7 +9,6 @@ import jakarta.inject.Named;
 public class Producers {
 
     @Produces
-    @Named("productRepo")
     public ProductRepository productRepository() {
         return new ProductRepository();
     }

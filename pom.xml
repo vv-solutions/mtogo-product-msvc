@@ -5,22 +5,27 @@
   <parent>
     <groupId>dk.vv</groupId>
     <artifactId>parent-msvc-pom</artifactId>
-    <version>1.0.16</version>
+    <version>1.0.23</version>
   </parent>
 
   <artifactId>mtogo-product-msvc</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <dependencies>
     <dependency>
-      <groupId>io.quarkus</groupId>
-      <artifactId>quarkus-resteasy-reactive</artifactId>
+      <groupId>io.quarkiverse.cucumber</groupId>
+      <artifactId>quarkus-cucumber</artifactId>
+      <version>1.0.0</version>
     </dependency>
     <dependency>
-      <groupId>io.rest-assured</groupId>
-      <artifactId>rest-assured</artifactId>
+      <groupId>io.quarkus</groupId>
+      <artifactId>quarkus-hibernate-orm-panache</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>org.testcontainers</groupId>
+      <artifactId>postgresql</artifactId>
+      <version>1.18.1</version>
       <scope>test</scope>
     </dependency>
-
   </dependencies>
   <profiles>
     <profile>

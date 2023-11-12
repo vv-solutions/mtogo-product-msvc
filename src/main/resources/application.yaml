@@ -1,0 +1,20 @@
+quarkus:
+  datasource:
+    devservices:
+      image-name: postgres:11-alpine
+    db-kind: postgresql
+    jdbc:
+      url: ${MTOGO_DB_BASE_URL}/product_svc_db?currentSchema=product
+    username: ${MTOGO_DB_USERNAME}
+    password: ${MTOGO_DB_PASSWORD}
+#
+#    devservices:
+#      image-name: postgres:11-alpine
+    transaction-manager:
+    default-transaction-timeout: 300s
+  hibernate-orm:
+    database:
+      generation: update
+#
+
+

@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS product
     net_price numeric(38,2),
     supplier_id integer
     );
-INSERT INTO product(description, gross_price, name, net_price, supplier_id)
+INSERT INTO product(description, gross_price, product_name, net_price, supplier_id)
 VALUES
     ('Organic Quinoa Salad with Lemon Vinaigrette', 12.99, 'Quinoa Salad', 10.99, 1),
     ('Artisanal Truffle Infused Olive Oil', 24.99, 'Truffle Olive Oil', 19.99, 2),

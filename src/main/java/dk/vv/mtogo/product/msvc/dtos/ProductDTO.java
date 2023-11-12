@@ -9,7 +9,7 @@ public class ProductDTO {
 
     private int id;
 
-    private String name;
+    private String productName;
 
     // Pre vat
     private BigDecimal grossPrice;
@@ -24,7 +24,7 @@ public class ProductDTO {
 
     public ProductDTO(Product product) {
         this.id = product.getId();
-        this.name = product.getName();
+        this.productName = product.getProductName();
         this.grossPrice = product.getGrossPrice();
         this.netPrice = product.getNetPrice();
         this.description = product.getDescription();

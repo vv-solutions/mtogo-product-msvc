@@ -9,6 +9,7 @@ import jakarta.inject.Named;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
+import org.eclipse.microprofile.openapi.annotations.Operation;
 
 import java.util.List;
 import java.util.Optional;
@@ -30,9 +31,19 @@ public class DomainResource {
 
     @GET
     @Path("/{supplierId}")
-    public List<ProductDTO> list(@PathParam("supplierId") int supplierId ) {
+    @Operation(summary = "Get products", description = "Returns a list of products by sending a supplier id")
+    public List<ProductDTO> getProductsBySupplierId(@PathParam("supplierId") int supplierId ) {
         return productRepository.getBySupplierId(supplierId);
     }
+
+
+    @POST
+    @Operation(summary = "Get products", description = "Returns a list of products by sending a list of product id's")
+    public List<ProductDTO> getProductsById(List<Integer> productIds ) {
+        return productIds.stream().map(id -> new ProductDTO(productRepository.findById(Long.valueOf(id)))).collect(Collectors.toList());
+    }
+
+
 //    @GET
 //    @Path("/{supplierId}")
 //    public Response list(@PathParam("supplierId") int supplierId ) {

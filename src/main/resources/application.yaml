@@ -1,5 +1,4 @@
 quarkus:
-
   smallrye-openapi:
     info-title: product-svc
     auto-add-security-requirement: false
@@ -11,6 +10,9 @@ quarkus:
   datasource:
     db-kind: postgresql
     jdbc:
+      # Is set to one as we only have 15 connections available in the database
+      initial-size: 1
+      min-size: 1
       url: ${MTOGO_DB_BASE_URL}/product_svc_db?currentSchema=product
     username: ${MTOGO_DB_USERNAME}
     password: ${MTOGO_DB_PASSWORD}

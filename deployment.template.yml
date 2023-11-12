@@ -32,3 +32,22 @@ spec:
       containers:
         - name: ${IMAGE_NAME}
           image: ${image_tag}
+          resources:
+            limits:
+              memory: 100Mi
+            requests:
+              memory: 100Mi
+          env:
+            - name: MTOGO_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-product-svc
+                  key: password
+            - name: MTOGO_DB_USERNAME
+              valueFrom:
+                secretKeyRef:
+                  name: db-product-svc
+                  key: username
+          envFrom:
+            - configMapRef:
+                name: mtogo-db-jdbc

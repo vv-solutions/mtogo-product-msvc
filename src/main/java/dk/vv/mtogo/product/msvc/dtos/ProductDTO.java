@@ -1,10 +1,13 @@
 package dk.vv.mtogo.product.msvc.dtos;
 
 import dk.vv.mtogo.product.msvc.pojos.Product;
+import io.vertx.core.cli.annotations.Hidden;
+import org.eclipse.microprofile.openapi.annotations.media.Schema;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
+@Schema(name = "Product")
 public class ProductDTO {
 
     private int id;

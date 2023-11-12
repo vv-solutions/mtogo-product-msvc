@@ -12,13 +12,7 @@ import java.util.List;
 public class ProductRepository implements PanacheRepository<Product> {
 
     public List<ProductDTO> getBySupplierId(int supplierId) {
-
-       List<ProductDTO> list = find("select p from Product p where p.supplierId = ?1 ",supplierId).project(ProductDTO.class).list();
-
-        return list;
+        return find("select p from Product p where p.supplierId = ?1 ",supplierId).project(ProductDTO.class).list();
     }
 
-//    public List<Product> getBySupplierId(int supplierId) {
-//        return find("supplierId", supplierId).list();
-//    }
 }

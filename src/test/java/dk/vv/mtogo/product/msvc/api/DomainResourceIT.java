@@ -52,4 +52,30 @@ class DomainResourceIT {
 
 
     }
+
+
+    @Test
+    void when_getting_list_of_4_product_ids_then_status_code_should_be_200_and_size_of_list_should_be_4(){
+
+        List<Integer> ids = List.of(1,2,3,4);
+
+        //ACT
+        List<ProductDTO> products = given()
+                .contentType(ContentType.JSON)
+                .body(ids)
+                    .when()
+                    .post("/api/product")
+                    .then()
+                    .assertThat()
+                    .statusCode(200)
+                    .extract()
+                    .body()
+                    .jsonPath()
+                    .getList("",ProductDTO.class);
+
+        // ASSERT
+        Assertions.assertEquals(4,products.size());
+
+
+    }
 }

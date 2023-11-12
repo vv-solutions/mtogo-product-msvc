@@ -9,7 +9,7 @@ env:
   GKE_ZONE: europe-central2-a
   DEPLOYMENT_NAME: pipe-line-test
   REPO: quarkus
-  IMAGE: pipeline-test
+  IMAGE: mtogo-product-msvc
 
 jobs:
   setup-build-publish-deploy:

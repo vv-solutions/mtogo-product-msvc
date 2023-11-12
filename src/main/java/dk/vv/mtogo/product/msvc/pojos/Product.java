@@ -9,7 +9,7 @@ import java.math.RoundingMode;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "product", schema = "product")
+@Table(name = "product")
 public class Product {
 
     @Id

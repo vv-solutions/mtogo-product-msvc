@@ -5,7 +5,6 @@ import dk.vv.mtogo.product.msvc.pojos.Product;
 import dk.vv.mtogo.product.msvc.repositories.ProductRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.inject.Named;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
@@ -14,9 +13,9 @@ import org.eclipse.microprofile.openapi.annotations.media.Content;
 import org.eclipse.microprofile.openapi.annotations.media.ExampleObject;
 import org.eclipse.microprofile.openapi.annotations.media.Schema;
 import org.eclipse.microprofile.openapi.annotations.parameters.RequestBody;
+import org.jboss.logging.Logger;
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 import static dk.vv.mtogo.product.msvc.api.ExamplePayloads.NEW_PRODUCTS;
@@ -27,11 +26,15 @@ import static dk.vv.mtogo.product.msvc.api.ExamplePayloads.NEW_PRODUCTS;
 @Consumes("application/json")
 public class SupplierResource {
 
-    @Inject
     ProductRepository productRepository;
 
-    public SupplierResource(ProductRepository productRepository) {
+
+    private final Logger logger;
+
+    @Inject
+    public SupplierResource(ProductRepository productRepository, Logger logger) {
         this.productRepository = productRepository;
+        this.logger = logger;
     }
 
     @POST
@@ -60,6 +63,7 @@ public class SupplierResource {
         productRepository.persist(products);
 
 
+        logger.info(String.format("Created %d products", products.size()));
         return Response.ok().status(201).build();
     }
 

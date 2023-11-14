@@ -7,7 +7,7 @@ env:
   GAR_LOCATION: europe-central2
   GKE_CLUSTER: vv-cluster-1
   GKE_ZONE: europe-central2-a
-  DEPLOYMENT_NAME: pipe-line-test
+  DEPLOYMENT_NAME: mtogo-product-msvc
   REPO: quarkus
   IMAGE: mtogo-product-msvc
 

@@ -29,11 +29,11 @@ Feature: Calculate net price
   Scenario: Bad input value
     Given I have a gross price of -100.00
     When I calculate the net price
-    Then I should get this error message "Gross price must be zero or greater"
+    Then I should get this error message "Net price must be zero or greater"
 
     Given I have a gross price of -100.5
     When I calculate the net price
-    Then I should get this error message "Gross price must be zero or greater"
+    Then I should get this error message "Net price must be zero or greater"
 
   Scenario: Gross price is zero
     Given I have a gross price of 0.0

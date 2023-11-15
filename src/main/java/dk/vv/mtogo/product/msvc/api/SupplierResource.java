@@ -57,7 +57,7 @@ public class SupplierResource {
         List<Product> products = productDTOS.stream().map(Product::new).collect(Collectors.toList());
 
         //Set net prices on products
-        products.forEach(Product::createNetPrice);
+        products.forEach(Product::createGrossPrice);
 
         //Persist products
         productRepository.persist(products);

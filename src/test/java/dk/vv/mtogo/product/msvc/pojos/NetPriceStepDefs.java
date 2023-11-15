@@ -18,14 +18,14 @@ public class NetPriceStepDefs {
     public void iHaveAGrossPriceOf(BigDecimal arg0) {
         exceptions = new ArrayList<>();
 
-        this.product.setGrossPrice(arg0);
+        this.product.setNetPrice(arg0);
 
     }
 
     @When("I calculate the net price")
     public void iCalculateTheNetPrice() {
         try{
-            this.product.createNetPrice();
+            this.product.createGrossPrice();
         } catch (Exception e) {
             exceptions.add(e);
         }
@@ -33,7 +33,7 @@ public class NetPriceStepDefs {
 
     @Then("I should get a net price of {bigdecimal}")
     public void iShouldGetANetPriceOf(BigDecimal arg0) {
-        Assertions.assertEquals(arg0, this.product.getNetPrice());
+        Assertions.assertEquals(arg0, this.product.getGrossPrice());
     }
 
     @Then("I should get this error message {string}")

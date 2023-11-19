@@ -1,7 +1,6 @@
 package dk.vv.mtogo.product.msvc.pojos;
 
-
-import dk.vv.mtogo.product.msvc.dtos.ProductDTO;
+import dk.vv.common.data.transfer.objects.product.ProductDTO;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -56,6 +55,17 @@ public class Product {
         this.netPrice = productDTO.getGrossPrice();
         this.description = productDTO.getDescription();
         this.supplierId = productDTO.getSupplierId();
+    }
+
+    public ProductDTO toDTO() {
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setId(getId());
+        productDTO.setProductName(this.getProductName());
+        productDTO.setNetPrice(this.getNetPrice());
+        productDTO.setGrossPrice(this.getGrossPrice());
+        productDTO.setDescription(this.getDescription());
+        productDTO.setSupplierId(this.getSupplierId());
+        return productDTO;
     }
 
     public int getId() {

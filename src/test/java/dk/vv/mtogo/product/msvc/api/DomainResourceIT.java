@@ -1,6 +1,6 @@
 package dk.vv.mtogo.product.msvc.api;
 
-import dk.vv.mtogo.product.msvc.dtos.ProductDTO;
+import dk.vv.common.data.transfer.objects.product.ProductDTO;
 import io.quarkus.test.junit.QuarkusTest;
 import io.restassured.http.ContentType;
 import jakarta.inject.Inject;

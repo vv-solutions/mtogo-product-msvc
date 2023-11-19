@@ -1,6 +1,6 @@
 package dk.vv.mtogo.product.msvc.api;
 
-import dk.vv.mtogo.product.msvc.dtos.ProductDTO;
+import dk.vv.common.data.transfer.objects.product.ProductDTO;
 import dk.vv.mtogo.product.msvc.pojos.Product;
 import dk.vv.mtogo.product.msvc.repositories.ProductRepository;
 import jakarta.enterprise.context.ApplicationScoped;

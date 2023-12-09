@@ -1,4 +1,6 @@
 quarkus:
+  http:
+    port: 8085
   smallrye-openapi:
     info-title: product-svc
     auto-add-security-requirement: false
@@ -10,10 +12,11 @@ quarkus:
   datasource:
     db-kind: postgresql
     jdbc:
-      # Is set to one as we only have 15 connections available in the database
+      # Is set to 5 as we have 112 connections in total
       initial-size: 1
       min-size: 1
-      url: ${MTOGO_DB_BASE_URL}/product_svc_db?currentSchema=product
+      max-size: 5
+      url: ${MTOGO_DB_BASE_URL}/product_svc_db
     username: ${MTOGO_DB_USERNAME}
     password: ${MTOGO_DB_PASSWORD}
 
@@ -22,3 +25,20 @@ quarkus:
   hibernate-orm:
     database:
       generation: update
+
+
+"%dev":
+  quarkus:
+    log:
+      level: INFO
+      console:
+        json: false
+    hibernate-orm:
+      database:
+        default-schema: "product"
+
+"%prod":
+  quarkus:
+    hibernate-orm:
+      database:
+        default-schema: "product"

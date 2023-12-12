@@ -1,8 +1,6 @@
 package dk.vv.mtogo.product.msvc.pojos;
 
-
-import dk.vv.mtogo.product.msvc.dtos.ProductDTO;
-import io.quarkus.hibernate.orm.panache.PanacheEntity;
+import dk.vv.common.data.transfer.objects.product.ProductDTO;
 import jakarta.persistence.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -22,13 +20,13 @@ public class Product {
     @Column(name = "product_name")
     private String productName;
 
-    // pre vat
-    @Column(name = "gross_price")
-    private BigDecimal grossPrice;
-
-    // Post vat
+    // netto
     @Column(name = "net_price")
     private BigDecimal netPrice;
+
+    // brutto
+    @Column(name = "gross_price")
+    private BigDecimal grossPrice;
 
     @Column(name = "description")
     private String description;
@@ -42,11 +40,11 @@ public class Product {
     private LocalDateTime createStamp;
 
 
-    public void createNetPrice(){
-        if (this.grossPrice.compareTo(BigDecimal.ZERO) < 0) {
-            throw new IllegalArgumentException("Gross price must be zero or greater");
+    public void createGrossPrice(){
+        if (this.netPrice.compareTo(BigDecimal.ZERO) < 0) {
+            throw new IllegalArgumentException("Net price must be zero or greater");
         }
-        this.netPrice = this.grossPrice.multiply(BigDecimal.valueOf(1.25)).setScale(2,RoundingMode.HALF_UP);
+        this.grossPrice = this.netPrice.multiply(BigDecimal.valueOf(1.25)).setScale(2,RoundingMode.HALF_UP);
     }
 
     public Product() {
@@ -54,9 +52,20 @@ public class Product {
 
     public Product(ProductDTO productDTO) {
         this.productName = productDTO.getProductName();
-        this.grossPrice = productDTO.getGrossPrice();
+        this.netPrice = productDTO.getGrossPrice();
         this.description = productDTO.getDescription();
         this.supplierId = productDTO.getSupplierId();
+    }
+
+    public ProductDTO toDTO() {
+        ProductDTO productDTO = new ProductDTO();
+        productDTO.setId(getId());
+        productDTO.setProductName(this.getProductName());
+        productDTO.setNetPrice(this.getNetPrice());
+        productDTO.setGrossPrice(this.getGrossPrice());
+        productDTO.setDescription(this.getDescription());
+        productDTO.setSupplierId(this.getSupplierId());
+        return productDTO;
     }
 
     public int getId() {
@@ -75,20 +84,20 @@ public class Product {
         this.productName = productName;
     }
 
-    public BigDecimal getGrossPrice() {
-        return grossPrice;
-    }
-
-    public void setGrossPrice(BigDecimal grossPrice) {
-        this.grossPrice = grossPrice;
-    }
-
     public BigDecimal getNetPrice() {
         return netPrice;
     }
 
-    public void setNetPrice(BigDecimal netPrice) {
-        this.netPrice = netPrice;
+    public void setNetPrice(BigDecimal grossPrice) {
+        this.netPrice = grossPrice;
+    }
+
+    public BigDecimal getGrossPrice() {
+        return grossPrice;
+    }
+
+    public void setGrossPrice(BigDecimal netPrice) {
+        this.grossPrice = netPrice;
     }
 
     public String getDescription() {

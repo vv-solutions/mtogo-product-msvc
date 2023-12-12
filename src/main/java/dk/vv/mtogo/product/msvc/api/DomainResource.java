@@ -1,6 +1,6 @@
 package dk.vv.mtogo.product.msvc.api;
 
-import dk.vv.mtogo.product.msvc.dtos.ProductDTO;
+import dk.vv.common.data.transfer.objects.product.ProductDTO;
 import dk.vv.mtogo.product.msvc.pojos.Product;
 import dk.vv.mtogo.product.msvc.repositories.ProductRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -40,7 +40,7 @@ public class DomainResource {
     @POST
     @Operation(summary = "Get products", description = "Returns a list of products by sending a list of product id's")
     public List<ProductDTO> getProductsById(List<Integer> productIds ) {
-        return productIds.stream().map(id -> new ProductDTO(productRepository.findById(Long.valueOf(id)))).collect(Collectors.toList());
+        return productIds.stream().map(id -> productRepository.findById(Long.valueOf(id)).toDTO()).collect(Collectors.toList());
     }
 
 

@@ -100,14 +100,11 @@ public class ProductTest {
         // ARRANGE
         Product product = new Product();
         product.setNetPrice(BigDecimal.valueOf(-100));
-        Exception exception= null;
+
 
         // ACT
-        try {
-            product.createGrossPrice();
-        } catch (Exception e){
-            exception = e;
-        }
+        Exception exception = Assertions.assertThrows(IllegalArgumentException.class, product::createGrossPrice);
+
 
         // ASSERT
         Assertions.assertEquals( "Net price must be zero or greater",exception.getMessage());
@@ -118,14 +115,9 @@ public class ProductTest {
          // ARRANGE
          Product product = new Product();
          product.setNetPrice(BigDecimal.valueOf(-100.5));
-         Exception exception= null;
 
          // ACT
-         try {
-             product.createGrossPrice();
-         } catch (Exception e){
-             exception = e;
-         }
+         Exception exception = Assertions.assertThrows(IllegalArgumentException.class, product::createGrossPrice);
 
         // ASSERT
         Assertions.assertEquals("Net price must be zero or greater", exception.getMessage());

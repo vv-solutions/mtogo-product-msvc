@@ -1,6 +1,6 @@
 quarkus:
   http:
-    port: 8081
+#    port: 8081
   smallrye-openapi:
     info-title: product-svc
     auto-add-security-requirement: false

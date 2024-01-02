@@ -12,3 +12,5 @@ You can run your application in dev mode that enables live coding using:
 ```
 ### About
 This service handles everything about products, that could be creation of new products, getting products by Supplier id or getting products by a list of ID's
+
+![hexagonal-architecture.png](images%2Fhexagonal-architecture.png)
